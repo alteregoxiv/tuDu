@@ -1,6 +1,1 @@
-#!/bin/bash
-
-$CLASSPATH=$(pwd):$CLASSPATH
-$PORT=3000
-export $CLASSPATH
-export $PORT
+export DIR=$(pwd);export CLASSPATH=$DIR:$CLASSPATH;export PORT=3000
