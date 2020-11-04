@@ -30,7 +30,7 @@ public class App {
         server.createContext("/", new HttpHandler() {
         	@Override
         	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-        		File file = new File(System.getenv("DIR") + "/App.java");
+        		File file = new File(System.getenv("DIR") + "/todo.html");
         		FileReader fr = new FileReader(file);
         		BufferedReader in = new BufferedReader(fr);
         		String data = new String();
