@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.OutputStream;
  
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpExchange;
@@ -29,7 +30,7 @@ public class App {
         server.createContext("/", new HttpHandler() {
         	@Override
         	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-        		File file = new File(System.getenv("DIR") + "/todo.json");
+        		File file = new File(System.getenv("DIR") + "/App.java");
         		FileReader fr = new FileReader(file);
         		BufferedReader in = new BufferedReader(fr);
         		String data = new String();
@@ -37,6 +38,12 @@ public class App {
         		while ((s = in.readLine()) != null)
         			data += s;
         		System.out.println(data);
+        		
+        		t.getResponseHeaders().set("Content-type" , "text/html");
+        		t.sendResponseHeaders(200 , data.length());
+        		OutputStream ot = t.getResponseBody();
+                ot.write(data.getBytes());
+                ot.close();
         	}
         });
         
