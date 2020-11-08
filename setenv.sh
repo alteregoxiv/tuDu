@@ -1,1 +1,1 @@
-export DIR=$(pwd);export CLASSPATH=$DIR/target/classes:$DIR/target/dependency/jackson-core-2.11.3.jar:$CLASSPATH;export PORT=3000
+export DIR=$(pwd);export CLASSPATH=$DIR/target/classes:$DIR/target/dependency/jackson-core-2.11.3.jar:$DIR/target/dependency/jackson-annotations-2.11.3.jar:$DIR/target/dependency/jackson-databind-2.11.3.jar:$CLASSPATH;export PORT=3000

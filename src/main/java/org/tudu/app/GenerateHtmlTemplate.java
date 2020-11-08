@@ -6,6 +6,10 @@ package org.tudu.app;
  */
 
 import java.io.IOException;
+import java.util.List;
+
+import org.tudu.json.TodoModel;
+import org.tudu.json.JsonReader;
 
 class HtmlTemplate {
 
@@ -13,7 +17,11 @@ class HtmlTemplate {
 
 	String getHTML() throws IOException {
 		String html = reader.readHTML("base.html");
-		System.out.println(html);
+		JsonReader.getInstance().readJsonAsObject("todo.json");
+		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
+		for (TodoModel todo : todoList)
+			System.out.println(todo);
+
 		return html;
 	}
 }

@@ -17,6 +17,7 @@ public class HtmlReader {
 
 	public String readHTML(String fileName) throws FileNotFoundException, IOException {
 		File file = new File(BASEDIR + "/views/" + fileName);
+		System.out.println(BASEDIR + "/views/" + fileName);
 		FileReader fr = new FileReader(file);
 		BufferedReader in = new BufferedReader(fr);
 		String html = new String();

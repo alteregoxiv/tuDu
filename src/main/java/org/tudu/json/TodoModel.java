@@ -6,7 +6,7 @@ package org.tudu.json;
  *
  */
 
-class TodoModel {
+public class TodoModel {
 	private String todo;
 	private String description;
 
