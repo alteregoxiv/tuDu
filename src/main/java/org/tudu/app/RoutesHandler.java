@@ -18,7 +18,7 @@ class RootHandler implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-		String html = htmlTemplate.getHTML();
+		String html = htmlTemplate.getBaseHTML();
 		t.getResponseHeaders().set("Content-type" , "text/html");
 		t.sendResponseHeaders(200 , html.length());
 		OutputStream ot = t.getResponseBody();

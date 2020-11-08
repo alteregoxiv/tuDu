@@ -7,16 +7,8 @@ package org.tudu.app;
  
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.io.FileReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.OutputStream;
  
 import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
  
 public class App {
     

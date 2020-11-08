@@ -26,7 +26,6 @@ public class JsonReader {
 	private static ObjectMapper objectMapper = new ObjectMapper();
 
 	public static JsonReader getInstance() {
-		System.out.println("instance");
 		if (reader == null)
 			reader = new JsonReader();
 		return reader;
@@ -38,23 +37,8 @@ public class JsonReader {
 
 	public void readJsonAsObject(String fileName) {
 		File file = Paths.get(BASEDIR + "/target/" + fileName).toFile();
-		System.out.println(BASEDIR + "/target/" + fileName);
-		// String file = "{\"todo\" : \"1st Instance\", \"description\" : \"JsonReader.getInstance(1)\"}";
-		System.out.println(file);
-		// try {
-		// TodoModel todo = objectMapper.readValue(file, TodoModel.class);
-		// System.out.println(todo);
-		// }
-		// catch(IOException e) {
-			// System.out.println(e);
-			// throw new java.io.UncheckedIOException(e);
-		// }
-		// ObjectMapper objectMapper = new ObjectMapper();
-		// System.out.println("file");
-		// System.out.println("objectMapper");
 		try {
 			todoList = objectMapper.readValue(file, type);
-			System.out.println(todoList);
 		} catch(JsonParseException | JsonMappingException ex) {
 			System.err.println(ex);
 		} catch(IOException ex) {
