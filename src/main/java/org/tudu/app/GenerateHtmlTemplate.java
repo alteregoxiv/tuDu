@@ -17,6 +17,13 @@ import org.tudu.json.JsonReader;
 class HtmlTemplate {
 
 	private static HtmlReader reader = new HtmlReader();
+	private static HtmlTemplate htmlTemplate = null;
+
+	HtmlTemplate getInstance() {
+		if (htmlTemplate == null)
+			htmlTemplate = new HtmlTemplate();
+		return htmlTemplate;
+	}
 
 	String getBaseHTML() throws IOException {
 		String html = reader.readHTML("base.html");
