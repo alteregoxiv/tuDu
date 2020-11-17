@@ -52,6 +52,10 @@ class HtmlTemplate {
 	}
 
 	String getViewPage() throws IOException {
-		return null;
+		String html = reader.readHTML("base.html");
+		String view = reader.readHTML("view.html");
+		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
+		System.out.println(todoList);
+		return html;
 	}
 }
