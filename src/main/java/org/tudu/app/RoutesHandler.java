@@ -39,3 +39,16 @@ class TodoList implements HttpHandler{
 	}
 
 }
+
+class CreateTodo implements HttpHandler {
+
+	@Override
+	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
+		String html = HtmlTemplate.getInstance().getCreatePage();
+		t.getResponseHeaders().set("Content-type" , "text/html");
+		t.sendResponseHeaders(200 , html.length());
+		OutputStream ot = t.getResponseBody();
+        ot.write(html.getBytes());
+        ot.close();
+	}
+}

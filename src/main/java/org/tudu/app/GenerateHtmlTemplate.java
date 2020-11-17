@@ -73,4 +73,12 @@ class HtmlTemplate {
 		html = html.replace("{{bodyContents}}", todos);
 		return html;
 	}
+
+	String getCreatePage() throws IOException {
+		String html = reader.readHTML("base.html");
+		String createPage = reader.readHTML("create.html");
+		html = html.replace("{{title}}", "Create Todo | TuDu");
+		html = html.replace("{{bodyContents}}", createPage);
+		return html;
+	}
 }
