@@ -43,4 +43,8 @@ class HtmlTemplate {
 		System.out.println(html + "\n\n\n");
 		return html;
 	}
+
+	String getViewPage() throws IOException {
+		
+	}
 }
