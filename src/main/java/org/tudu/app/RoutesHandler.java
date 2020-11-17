@@ -14,15 +14,27 @@ import com.sun.net.httpserver.HttpHandler;
 
 class RootHandler implements HttpHandler {
 
-	private static HtmlTemplate htmlTemplate = new HtmlTemplate();
-
 	@Override
 	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-		String html = htmlTemplate.getBaseHTML();
+		String html = HtmlTemplate.getInstance().getBaseHTML();
 		t.getResponseHeaders().set("Content-type" , "text/html");
 		t.sendResponseHeaders(200 , html.length());
 		OutputStream ot = t.getResponseBody();
         ot.write(html.getBytes());
         ot.close();
 	}
+}
+
+class TodoList implements HttpHandler{
+
+	@Override
+	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
+		String html = HtmlTemplate.getInstance().getViewPage();
+		t.getResponseHeaders().set("Content-type" , "text/html");
+		t.sendResponseHeaders(200 , html.length());
+		OutputStream ot = t.getResponseBody();
+        ot.write(html.getBytes());
+        ot.close();
+	}
+
 }

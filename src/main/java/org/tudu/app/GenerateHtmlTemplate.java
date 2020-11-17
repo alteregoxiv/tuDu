@@ -19,7 +19,7 @@ class HtmlTemplate {
 	private static HtmlReader reader = new HtmlReader();
 	private static HtmlTemplate htmlTemplate = null;
 
-	HtmlTemplate getInstance() {
+	static HtmlTemplate getInstance() {
 		if (htmlTemplate == null)
 			htmlTemplate = new HtmlTemplate();
 		return htmlTemplate;
@@ -52,6 +52,6 @@ class HtmlTemplate {
 	}
 
 	String getViewPage() throws IOException {
-		
+		return null;
 	}
 }
