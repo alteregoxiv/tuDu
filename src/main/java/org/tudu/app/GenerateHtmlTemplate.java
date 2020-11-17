@@ -65,12 +65,12 @@ class HtmlTemplate {
 
 			for(int i=1 ; i<query.length ; i++){
 				TodoModel td = todoList.get(Integer.parseInt(query[i]));
-				String todo = view.replace("{{todo}}" , td.getTodo());
-				todos += todo.replace("{{desc}}" , td.getDescription());
-				html = html.replace("{{bodyContents}}", todos);
+				String todo = view.replace("{{todo}}", td.getTodo());
+				todo = todo.replace("{{value}}", query[i]);
+				todos += todo.replace("{{desc}}", td.getDescription());
 			}
-
 		}
+		html = html.replace("{{bodyContents}}", todos);
 		return html;
 	}
 }
