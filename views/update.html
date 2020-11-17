@@ -1,9 +1,11 @@
 <div class="container">
+    <br>
+    <br>
+    <br>
 	<center>
 		<form action="/update/save" method="GET">
-			<input type="text" name="todo" value="{{todo}}">
-			<textarea name="description" value="{{desc}}">
-			</textarea>
+			<input type="text" name="todo" value="{{todo}}" required><br><br>
+			<textarea rows="12" cols="80" name="description" required>{{desc}}</textarea> <br>
 			<input class="button btn btn-primary" type="submit" value="Update">
 		</form>	
 	</center>

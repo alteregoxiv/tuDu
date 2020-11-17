@@ -21,7 +21,7 @@ public class App {
         server.createContext("/", new RootHandler());
         server.createContext("/show", new TodoList());
         server.createContext("/create", new CreateTodo());
-        // server.createContext("/update", new UpdateTodo());
+        server.createContext("/update", new UpdateTodo());
         
         server.setExecutor(null);
         server.start();

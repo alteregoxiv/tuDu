@@ -52,3 +52,18 @@ class CreateTodo implements HttpHandler {
         ot.close();
 	}
 }
+
+class UpdateTodo implements HttpHandler{
+
+	@Override
+	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
+		String id = t.getRequestURI().getQuery().split("=")[1];
+		String html = HtmlTemplate.getInstance().getUpdatePage(id);
+		t.getResponseHeaders().set("Content-type" , "text/html");
+		t.sendResponseHeaders(200 , html.length());
+		OutputStream ot = t.getResponseBody();
+        ot.write(html.getBytes());
+        ot.close();
+	}
+
+}

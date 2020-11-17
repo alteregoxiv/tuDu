@@ -81,4 +81,18 @@ class HtmlTemplate {
 		html = html.replace("{{bodyContents}}", createPage);
 		return html;
 	}
+
+	String getUpdatePage(String id) throws IOException{
+		String html = reader.readHTML("base.html");
+		String view = reader.readHTML("update.html");
+		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
+		System.out.println(todoList);
+
+		html = html.replace("{{title}}", "Update Todo | TuDu");
+		TodoModel td = todoList.get(Integer.parseInt(id));
+		view = view.replace("{{todo}}" , td.getTodo());
+		view = view.replace("{{desc}}" , td.getDescription());
+		html = html.replace("{{bodyContents}}" , view);
+		return html;
+	}
 }
