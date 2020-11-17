@@ -39,7 +39,7 @@ class HtmlTemplate {
 			for (int i = 0; i < size; i++)
 				todos += String.format("<input type=\"checkbox\" name = \"todo\" value = \"%d\"> %s <br>", i, todoList.get(i).getTodo());
 			todos += "<button class = \"button btn-danger\" formaction = \"/delete\">Mark Done</button>";
-			todos += "<button class = \"button btn-success\" formaction = \'/show-todos\'>Show</button>";
+			todos += "<button class = \"button btn-success\" formaction = \'/show\'>Show</button>";
 		}
 		else {
 			todos = "<h2> You\'re all caught up. + Add todos to see them here. </h2>";
@@ -51,11 +51,26 @@ class HtmlTemplate {
 		return html;
 	}
 
-	String getViewPage() throws IOException {
+	String getViewPage(String []query) throws IOException {
 		String html = reader.readHTML("base.html");
 		String view = reader.readHTML("view.html");
 		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
 		System.out.println(todoList);
+
+		html = html.replace("{{title}}", "Show Todo | TuDu");
+		String todos = new String();
+		if(query.length==1)
+			todos += "<h1>Nothing Selected...Please Select One to View the Todo...</h1>";
+		else{
+
+			for(int i=1 ; i<query.length ; i++){
+				TodoModel td = todoList.get(Integer.parseInt(query[i]));
+				String todo = view.replace("{{todo}}" , td.getTodo());
+				todos += todo.replace("{{desc}}" , td.getDescription());
+				html = html.replace("{{bodyContents}}", todos);
+			}
+
+		}
 		return html;
 	}
 }

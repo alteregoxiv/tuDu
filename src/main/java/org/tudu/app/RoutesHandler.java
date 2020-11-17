@@ -29,7 +29,8 @@ class TodoList implements HttpHandler{
 
 	@Override
 	public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-		String html = HtmlTemplate.getInstance().getViewPage();
+		String query[] = t.getRequestURI().getQuery().split("&todo=");
+		String html = HtmlTemplate.getInstance().getViewPage(query);
 		t.getResponseHeaders().set("Content-type" , "text/html");
 		t.sendResponseHeaders(200 , html.length());
 		OutputStream ot = t.getResponseBody();
