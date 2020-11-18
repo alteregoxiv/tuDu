@@ -20,8 +20,8 @@ class ModifyTodoList {
                 String q[] = query.split("=");
                 String todo = q[1].split("&")[0];
                 String description = q[2];
-                td.setTodo(todo);
-                td.setDescription(description);
+                td.setTodo(todo.replace("+" , " "));
+                td.setDescription(description.replace("+" , " "));
                 todoList.add(td);
                 JsonWriter.getInstance().writeObjectAsJson("todo.json");
                 return todoList.size() - 1;
@@ -33,8 +33,8 @@ class ModifyTodoList {
                 int id = Integer.parseInt(q[1].split("&")[0]);
                 String todo = q[2].split("&")[0];
                 String description = q[3];
-                todoList.get(id).setTodo(todo);
-                todoList.get(id).setDescription(description);
+                todoList.get(id).setTodo(todo.replace("+" , " "));
+                todoList.get(id).setDescription(description.replace("+" , " "));
                 JsonWriter.getInstance().writeObjectAsJson("todo.json");
                 return id;
         }
