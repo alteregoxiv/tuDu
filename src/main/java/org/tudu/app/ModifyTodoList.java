@@ -40,6 +40,9 @@ class ModifyTodoList {
         }
 
         static void delete(String[] ids) {
-
+                List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
+                for(int i=1 ; i<ids.length ; i++)
+                        todoList.remove(Integer.parseInt(ids[i])-i+1);
+                JsonWriter.getInstance().writeObjectAsJson("todo.json");
         }
 }

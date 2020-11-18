@@ -83,7 +83,9 @@ class DeleteTodo implements HttpHandler {
 
         @Override
         public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-                t.getResponseHeaders().set("Location", "/");
-                t.sendResponseHeaders(302, 0);
+			String query[] = t.getRequestURI().getQuery().split("&todo=");
+			ModifyTodoList.delete(query);
+            t.getResponseHeaders().set("Location", System.getenv("HOST") + ":" + System.getenv("PORT") + "/");
+            t.sendResponseHeaders(302, 0);
         }
 }
