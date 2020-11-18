@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JsonWriter {
         private static JsonWriter writer = null;
         private static String BASEDIR = System.getenv("DIR");
-        private static ObjectMapper objectMapper = new ObjectMapper();
+        private static ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
         public static JsonWriter getInstance() {
                 if (writer == null)

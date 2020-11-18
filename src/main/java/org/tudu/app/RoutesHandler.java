@@ -70,16 +70,16 @@ class SaveTodo implements HttpHandler {
 
         @Override
         public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-        	// String uri = t.getRequestURI();
-        	System.out.println("Location => " + System.getenv("HOST") + ":" + System.getenv("PORT") + "/show");
-            ModifyTodoList.create(null, null);
-            String res = "Redirecting ...";
-            t.getResponseHeaders().set("Content-type", "text/plain");
-            t.getResponseHeaders().set("Location", System.getenv("HOST") + ":" + System.getenv("PORT") + "/show");
-            t.sendResponseHeaders(302, res.length());
-            OutputStream ot = t.getResponseBody();
-        	ot.write(res.getBytes());
-        	ot.close();
+        	// String query = t.getRequestURI();
+            int id = ModifyTodoList.create(null, null);
+        	System.out.println("Location => " + System.getenv("HOST") + ":" + System.getenv("PORT") +"/show?empty=&todo=" + id);
+            // String res = "Redirecting ...";
+            // t.getResponseHeaders().set("Content-type", "text/plain");
+            t.getResponseHeaders().set("Location", System.getenv("HOST") + ":" + System.getenv("PORT") + "/show?empty=&todo=" + id);
+            t.sendResponseHeaders(302, 0);
+         //    OutputStream ot = t.getResponseBody();
+        	// ot.write(res.getBytes());
+        	// ot.close();
     	}
 }
 
