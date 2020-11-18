@@ -14,9 +14,12 @@ import org.tudu.json.JsonReader;
 import org.tudu.json.JsonWriter;
 
 class ModifyTodoList {
-        static int create(String todo, String description) {
+        static int create(String query) {
                 List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
                 TodoModel td = new TodoModel();
+                String q[] = query.split("=");
+                String todo = q[1].split("&")[0];
+                String description = q[2];
                 td.setTodo(todo);
                 td.setDescription(description);
                 todoList.add(td);
@@ -24,7 +27,7 @@ class ModifyTodoList {
                 return todoList.size() - 1;
         }
 
-        static int update(int id, String todo, String description) {
+        static int update(String query) {
                 return 0;
         }
 
