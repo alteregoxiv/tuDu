@@ -31,7 +31,7 @@ public class JsonWriter {
                 List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
                 File file = new File(BASEDIR + "/target/" + filename);
                 try {
-			todoList = objectMapper.writeValueAsString(file, todoList);
+			objectMapper.writeValue(file, todoList);
 		} catch(JsonParseException | JsonMappingException ex) {
 			System.err.println(ex);
 		} catch(IOException ex) {
