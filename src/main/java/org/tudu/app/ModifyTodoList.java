@@ -28,7 +28,15 @@ class ModifyTodoList {
         }
 
         static int update(String query) {
-                return 0;
+                List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
+                String q[] = query.split("=");
+                int id = Integer.parseInt(q[1].split("&")[0]);
+                String todo = q[2].split("&")[0];
+                String description = q[3];
+                todoList.get(id).setTodo(todo);
+                todoList.get(id).setDescription(description);
+                JsonWriter.getInstance().writeObjectAsJson("todo.json");
+                return id;
         }
 
         static void delete(String[] ids) {
