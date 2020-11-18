@@ -20,7 +20,7 @@ class ModifyTodoList {
                 td.setTodo(todo);
                 td.setDescription(description);
                 todoList.add(td);
-                JsonWriter.getInstance().writeObjectAsJson("tud.json");
+                JsonWriter.getInstance().writeObjectAsJson("todo.json");
         }
 
         static void update(int id, String todo, String description) {

@@ -61,8 +61,8 @@ class UpdateTodo implements HttpHandler{
 		t.getResponseHeaders().set("Content-type" , "text/html");
 		t.sendResponseHeaders(200 , html.length());
 		OutputStream ot = t.getResponseBody();
-                ot.write(html.getBytes());
-                ot.close();
+        ot.write(html.getBytes());
+        ot.close();
 	}
 }
 
@@ -70,10 +70,17 @@ class SaveTodo implements HttpHandler {
 
         @Override
         public void handle(HttpExchange t) throws IOException, FileNotFoundException {
-                ModifyTodoList.create(null, null);
-                t.getResponseHeaders().set("Location", "/show");
-                t.sendResponseHeaders(302, 0);
-        }
+        	// String uri = t.getRequestURI();
+        	System.out.println("Location => " + System.getenv("HOST") + ":" + System.getenv("PORT") + "/show");
+            ModifyTodoList.create(null, null);
+            String res = "Redirecting ...";
+            t.getResponseHeaders().set("Content-type", "text/plain");
+            t.getResponseHeaders().set("Location", System.getenv("HOST") + ":" + System.getenv("PORT") + "/show");
+            t.sendResponseHeaders(302, res.length());
+            OutputStream ot = t.getResponseBody();
+        	ot.write(res.getBytes());
+        	ot.close();
+    	}
 }
 
 class DeleteTodo implements HttpHandler {
