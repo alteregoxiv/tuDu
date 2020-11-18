@@ -30,7 +30,6 @@ class HtmlTemplate {
 		String todoListHtml = reader.readHTML("todo.html");
 		JsonReader.getInstance().readJsonAsObject("todo.json");
 		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
-		System.out.println(todoList);
 
 		html = html.replace("{{title}}", "Todo List | TuDu");
 		String todos = "<input type = \"hidden\" name = \"empty\" value=\"\"> <br>";
@@ -46,8 +45,6 @@ class HtmlTemplate {
 		}
 
 		html = html.replace("{{bodyContents}}", todoListHtml.replace("{{todos}}", todos));
-		System.out.println(todos + "\n\n\n");
-		System.out.println(html + "\n\n\n");
 		return html;
 	}
 
@@ -55,7 +52,6 @@ class HtmlTemplate {
 		String html = reader.readHTML("base.html");
 		String view = reader.readHTML("view.html");
 		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
-		System.out.println(todoList);
 
 		html = html.replace("{{title}}", "Show Todo | TuDu");
 		String todos = new String();
@@ -86,7 +82,6 @@ class HtmlTemplate {
 		String html = reader.readHTML("base.html");
 		String view = reader.readHTML("update.html");
 		List<TodoModel> todoList = JsonReader.getInstance().getTodoList();
-		System.out.println(todoList);
 
 		html = html.replace("{{title}}", "Update Todo | TuDu");
                 view = view.replace("{{id}}", id);
