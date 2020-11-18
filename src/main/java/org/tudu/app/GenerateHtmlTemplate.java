@@ -89,6 +89,7 @@ class HtmlTemplate {
 		System.out.println(todoList);
 
 		html = html.replace("{{title}}", "Update Todo | TuDu");
+                view = view.replace("{{id}}", id);
 		TodoModel td = todoList.get(Integer.parseInt(id));
 		view = view.replace("{{todo}}" , td.getTodo());
 		view = view.replace("{{desc}}" , td.getDescription());

@@ -16,12 +16,14 @@ public class App {
     
     public static void main( String[] args ) throws IOException {
     
-        HttpServer server = HttpServer.create(new InetSocketAddress(PORT) , 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
 
         server.createContext("/", new RootHandler());
         server.createContext("/show", new TodoList());
         server.createContext("/create", new CreateTodo());
         server.createContext("/update", new UpdateTodo());
+        server.createContext("/save", new SaveTodo());
+        server.createContext("/delete", new DeleteTodo());
         
         server.setExecutor(null);
         server.start();

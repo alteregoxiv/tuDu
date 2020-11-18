@@ -37,7 +37,6 @@ class TodoList implements HttpHandler{
         ot.write(html.getBytes());
         ot.close();
 	}
-
 }
 
 class CreateTodo implements HttpHandler {
@@ -62,8 +61,26 @@ class UpdateTodo implements HttpHandler{
 		t.getResponseHeaders().set("Content-type" , "text/html");
 		t.sendResponseHeaders(200 , html.length());
 		OutputStream ot = t.getResponseBody();
-        ot.write(html.getBytes());
-        ot.close();
+                ot.write(html.getBytes());
+                ot.close();
 	}
+}
 
+class SaveTodo implements HttpHandler {
+
+        @Override
+        public void handle(HttpExchange t) throws IOException, FileNotFoundException {
+                ModifyTodoList.create(null, null);
+                t.getResponseHeaders().set("Location", "/show");
+                t.sendResponseHeaders(302, 0);
+        }
+}
+
+class DeleteTodo implements HttpHandler {
+
+        @Override
+        public void handle(HttpExchange t) throws IOException, FileNotFoundException {
+                t.getResponseHeaders().set("Location", "/");
+                t.sendResponseHeaders(302, 0);
+        }
 }
